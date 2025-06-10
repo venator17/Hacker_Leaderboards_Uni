@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Edit Your Profile</h2>
+    <form method="post">
+        <div>
+            <label for="challenges_completed">Challenges Completed:</label>
+            <input type="number" id="challenges_completed" name="challenges_completed" value="{{ profile.challenges_completed }}" required>
+        </div>
+        <div>
+            <label for="country">Country:</label> {# New: Country Field #}
+            <input type="text" id="country" name="country" value="{{ profile.country }}" required>
+        </div>
+        <button type="submit">Update Profile</button>
+    </form>
+{% endblock %}

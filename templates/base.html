@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Leaderboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                {% if session.get('logged_in') %}
+                    {% if session.get('is_admin') %}
+                        <li><a href="{{ url_for('admin_panel') }}">Admin Panel</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('edit_profile') }}">Edit Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Hacker Leaderboard</p>
+    </footer>
+
+    <script>
+        $(function() {
+            $("#some_date").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            var modal = document.getElementById('myModal'); // Assuming 'myModal' is your common modal ID
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // For uploader (placeholder)
+        document.addEventListener('DOMContentLoaded', function() {
+            var uploaderArea = document.querySelector('.uploader-area');
+            if (uploaderArea) {
+                uploaderArea.addEventListener('click', function() {
+                    alert('File uploader clicked! (Functionality not implemented in this example)');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

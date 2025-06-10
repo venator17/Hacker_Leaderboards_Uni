@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Add Leaderboard Entry</h2>
+    <form method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="country">Country:</label> {# New: Country Field #}
+            <input type="text" id="country" name="country" required>
+        </div>
+        <div>
+            <label for="challenges_completed">Challenges Completed:</label>
+            <input type="number" id="challenges_completed" name="challenges_completed" value="0">
+        </div>
+        <div>
+            <label for="respect">Respect:</label>
+            <input type="number" id="respect" name="respect" value="0">
+        </div>
+        <button type="submit">Add Entry</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Hacker Leaderboard</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Country</th> {# New: Country Column #}
+                <th>Rank</th>
+                <th>Challenges Completed</th>
+                <th>Respect</th>
+                {% if session.get('logged_in') %}
+                    <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in leaderboard %}
+            <tr>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.country }}</td> {# New: Display Country #}
+                <td>{{ entry.rank }}</td>
+                <td>{{ entry.challenges_completed }}</td>
+                <td>{{ entry.respect }}</td>
+                {% if session.get('logged_in') %}
+                    <td>
+                        {% if session.get('user_id') != entry.user_id %} {# Ensure it's not the user's own entry #}
+                            <form action="{{ url_for('respect_entry', leaderboard_entry_id=entry.id) }}" method="post">
+                                <button type="submit" class="respect-button {{ 'respected' if entry.has_liked }}">
+                                    {% if entry.has_liked %}💚{% else %}👍{% endif %} {# Green heart or thumbs up for respect #}
+                                </button>
+                            </form>
+                        {% endif %}
+                    </td>
+                {% endif %}
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">No entries yet. Register to add yourself!</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Register New Hacker</h2>
+    <form method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="confirm_password">Confirm Password:</label> {# New: Confirm Password Field #}
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <div>
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}

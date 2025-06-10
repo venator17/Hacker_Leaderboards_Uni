@@ -1,0 +1,441 @@
+:root {
+    --pixel-font: 'Press Start 2P', monospace;
+    --bg-black: #000000;
+    --main-cyan: #00FFFF; /* Used for text and borders (now also for table headers background) */
+    --dark-cyan: #008080; /* A slightly darker cyan for backgrounds and inner borders */
+    --medium-grey: #444444;
+    --dark-grey: #222222;
+}
+
+body {
+    font-family: var(--pixel-font);
+    background-color: var(--bg-black);
+    color: var(--main-cyan); /* Main text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 0.85em; /* Adjust for better readability with pixel font */
+    line-height: 1.6; /* Give a bit more space for pixel font */
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--dark-grey);
+    border: 2px solid var(--main-cyan);
+    border-radius: 15px; /* Rounder corners for main container */
+}
+
+h1, h2, h3 {
+    color: var(--main-cyan);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header {
+    background-color: var(--bg-black);
+    padding: 15px 0;
+    border-bottom: 2px solid var(--main-cyan);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--main-cyan);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid var(--main-cyan);
+    border-radius: 8px; /* Rounder corners */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--main-cyan);
+    color: var(--bg-black);
+}
+
+.flashes {
+    list-style: none;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 8px; /* Rounder corners */
+}
+
+.flashes li {
+    padding: 8px;
+    margin-bottom: 5px;
+}
+
+.flashes .success {
+    background-color: #006400; /* Darker green */
+    color: #00FF00; /* Neon Green */
+    border-color: #00FF00;
+}
+
+.flashes .danger {
+    background-color: #8B0000; /* Darker red */
+    color: #FF0000; /* Neon Red */
+    border-color: #FF0000;
+}
+
+.flashes .info {
+    background-color: #00008B; /* Darker blue */
+    color: #00BFFF; /* Deep Sky Blue */
+    border-color: #00BFFF;
+}
+
+.flashes .warning {
+    background-color: #8B4513; /* Darker orange */
+    color: #FFA500; /* Orange */
+    border-color: #FFA500;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 2px solid var(--main-cyan);
+    /* REMOVED: border-radius: 15px; to make all corners sharp */
+    overflow: hidden; /* Keep this to ensure internal borders/backgrounds are clipped cleanly */
+}
+
+th, td {
+    border: 1px solid var(--dark-cyan); /* Lighter border for inner cells */
+    padding: 10px;
+    text-align: left;
+    color: var(--main-cyan); /* Main cyan for all text in table */
+}
+
+th {
+    background-color: var(--main-cyan); /* Light Cyan background */
+    font-weight: bold;
+    color: var(--bg-black); /* Black font */
+    padding: 12px 10px; /* Slightly more vertical padding for nicer look */
+    font-size: 0.9em; /* Slightly larger text for headers */
+    border-bottom: 2px solid var(--bg-black); /* A darker separation line below header */
+}
+
+/* No specific border-radius for th:first-child/last-child needed now that table is sharp */
+
+tr:nth-child(even) {
+    background-color: var(--dark-grey); /* Dark grey for even rows */
+}
+
+tr:hover {
+    background-color: var(--medium-grey); /* Slightly lighter grey on hover */
+}
+
+form {
+    background-color: var(--dark-grey);
+    padding: 20px;
+    border: 2px solid var(--main-cyan);
+    border-radius: 15px; /* Rounder corners for forms */
+    margin-top: 20px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--main-cyan);
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+select {
+    width: calc(100% - 24px); /* Adjust for padding and border */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--main-cyan);
+    background-color: var(--bg-black);
+    color: var(--main-cyan);
+    border-radius: 8px; /* Rounder corners for inputs */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus {
+    border-color: #00FFFF; /* Brighter cyan on focus */
+    outline: none;
+}
+
+button, input[type="submit"], .button { /* .button class for consistency with links */
+    background-color: var(--main-cyan);
+    color: var(--bg-black);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px; /* Rounder corners */
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 10px;
+}
+
+button:hover, input[type="submit"]:hover, .button:hover {
+    background-color: #00DCDC; /* Slightly darker cyan on hover */
+    transform: translateY(-2px);
+}
+
+button:active, input[type="submit"]:active, .button:active {
+    transform: translateY(0);
+}
+
+.btn-danger {
+    background-color: #FF0000; /* Neon Red */
+    color: var(--bg-black);
+}
+
+.btn-danger:hover {
+    background-color: #CC0000; /* Darker red on hover */
+}
+
+.btn-primary {
+    background-color: #00BFFF; /* Deep Sky Blue */
+    color: var(--bg-black);
+}
+
+.btn-primary:hover {
+    background-color: #0099CC; /* Darker blue on hover */
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.actions form {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    display: inline;
+}
+
+.actions button {
+    padding: 8px 12px;
+    font-size: 0.8em;
+}
+
+.respect-button {
+    background: none;
+    border: none;
+    color: var(--main-cyan);
+    cursor: pointer;
+    font-size: 1.8em;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.respect-button:hover {
+    color: #00DCDC;
+}
+
+.respect-button.respected {
+    color: #00FF00; /* Neon Green for respected */
+}
+
+/* Inline label for checkboxes */
+.inline-label {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+
+/* --- JQuery UI Datepicker Overrides (Pixel Style) --- */
+/* General Datepicker container */
+.ui-datepicker {
+    font-family: var(--pixel-font);
+    font-size: 0.8em; /* Match general text size */
+    background-color: var(--dark-grey);
+    border: 2px solid var(--main-cyan);
+    border-radius: 8px; /* Rounder corners */
+    padding: 10px;
+}
+
+/* Datepicker header (month/year navigation) */
+.ui-datepicker-header {
+    background-color: var(--dark-cyan);
+    color: var(--bg-black);
+    border: 1px solid var(--main-cyan);
+    border-radius: 5px; /* Rounder corners */
+    padding: 5px;
+}
+
+/* Prev/Next buttons */
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    color: var(--bg-black);
+    background-color: var(--main-cyan);
+    border: 1px solid var(--bg-black);
+    border-radius: 4px; /* Rounder corners */
+    cursor: pointer;
+    padding: 2px 5px;
+    top: 2px; /* Adjust position */
+    font-size: 1em; /* Make symbols clear */
+}
+
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+    background-color: #00DCDC;
+}
+
+/* Month and Year dropdowns */
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+    background-color: var(--dark-cyan);
+    color: var(--bg-black);
+    border: 1px solid var(--main-cyan);
+    border-radius: 4px; /* Rounder corners */
+    padding: 2px;
+    margin: 0 5px;
+    font-family: var(--pixel-font);
+    font-size: 0.9em;
+}
+
+/* Days of the week */
+.ui-datepicker th {
+    /* Note: This specific 'th' rule applies to the datepicker's internal day headers,
+       not the main leaderboard table headers. */
+    background-color: var(--dark-grey); /* Keep the dark grey background */
+    color: var(--main-cyan);
+    border: none; /* No border for day headers */
+}
+
+/* Individual days (cells) */
+.ui-datepicker td {
+    border: 1px solid var(--dark-grey); /* Subtle border for cells */
+    padding: 5px;
+}
+
+.ui-datepicker td span,
+.ui-datepicker td a {
+    color: var(--main-cyan);
+    text-align: center;
+    display: block;
+    padding: 3px;
+    text-decoration: none;
+    background-color: var(--bg-black); /* Default cell background */
+}
+
+/* Hover state for days */
+.ui-datepicker td a:hover {
+    background-color: var(--medium-grey);
+    color: var(--main-cyan);
+    border: 1px solid var(--main-cyan);
+}
+
+/* Selected day */
+.ui-state-active, .ui-datepicker td.ui-datepicker-current-day a {
+    background-color: var(--main-cyan) !important;
+    color: var(--bg-black) !important;
+    font-weight: bold;
+}
+
+/* Other month days */
+.ui-datepicker td.ui-datepicker-other-month span {
+    color: #555555; /* Dim other month days */
+}
+
+/* Datepicker input field (adjust to match) */
+.datepicker-input {
+    background-color: var(--bg-black);
+    border: 1px solid var(--main-cyan);
+    color: var(--main-cyan);
+    padding: 10px;
+    border-radius: 8px; /* Rounder corners */
+    font-family: var(--pixel-font);
+}
+
+/* --- Modal Styling --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Darker overlay */
+}
+
+.modal-content {
+    background-color: var(--dark-grey);
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 2px solid var(--main-cyan);
+    border-radius: 15px; /* Rounder corners */
+    width: 80%;
+    max-width: 600px; /* Limit max width */
+    position: relative; /* For close button positioning */
+}
+
+.close-button {
+    color: var(--main-cyan);
+    float: right;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #00DCDC;
+    text-decoration: none;
+}
+
+.uploader-area {
+    border: 2px dashed var(--main-cyan);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px; /* Rounder corners */
+    color: var(--main-cyan);
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.uploader-area:hover {
+    background-color: var(--medium-grey);
+}
+
+footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    padding: 15px;
+    background-color: var(--bg-black);
+    border-top: 2px solid var(--main-cyan);
+    text-align: center;
+    color: var(--main-cyan);
+    font-size: 0.75em; /* Smaller for footer */
+}
